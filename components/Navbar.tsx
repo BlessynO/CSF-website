@@ -17,22 +17,22 @@ const Navbar: React.FC = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-3 sm:py-4'
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <div className={`p-2 rounded-full ${isScrolled ? 'bg-burgundy text-white' : 'bg-white text-burgundy'} transition-colors`}>
              <Heart className="w-6 h-6 fill-current" />
           </div>
-          <span className={`text-xl font-bold font-serif ${isScrolled ? 'text-burgundy' : 'text-white'} transition-colors`}>
+          <span className={`text-lg sm:text-xl font-bold font-serif ${isScrolled ? 'text-burgundy' : 'text-white'} transition-colors`}>
             Conqueror SCF
           </span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="#volunteer"
-            className={`px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 ${
+            className={`px-4 lg:px-6 py-2 sm:py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 text-sm lg:text-base ${
               isScrolled 
                 ? 'bg-burgundy text-white hover:bg-burgundy-light' 
                 : 'bg-white text-burgundy hover:bg-gray-100'
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t">
-          <div className="flex flex-col p-6 space-y-4">
+          <div className="flex flex-col p-4 sm:p-6 space-y-3 sm:space-y-4">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}

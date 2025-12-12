@@ -1,0 +1,30 @@
+version: 1
+applications:
+  - appRoot: ./
+    frontend:
+      buildPath: ./
+      phases:
+        preBuild:
+          commands:
+            - echo Entered the pre-build phase...
+            - pwd
+            - npm install --force
+
+        build:
+          commands:
+            - echo "🛠️ Setting up your environmental variables..."
+            - echo "NEXT_PUBLIC_USER_POOL_ID=$NEXT_PUBLIC_USER_POOL_ID" >> .env
+            - echo "NEXT_PUBLIC_USER_POOL_CLIENT_ID=$NEXT_PUBLIC_USER_POOL_CLIENT_ID" >> .env
+            - echo "NEXT_PUBLIC_REGION=$NEXT_PUBLIC_REGION" >> .env
+            - echo "Printing environmental variables to the console to ensure they are correct"
+            - cat .env
+            - npm run build
+            - echo "✅ Success!"
+      artifacts:
+        baseDirectory: dist
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - node_modules/**/*
+
